@@ -1,2 +1,2 @@
-# Chess-Scacchi
-Got bored, am making chess
+# Chess
+Got bored, made chess
