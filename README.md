@@ -1,2 +1,2 @@
 # Chess
-Got bored, made chess
+Got bored, made chess. Not a bot, just the game.
