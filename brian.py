@@ -228,6 +228,7 @@ while not lost:
 
                         if check_check(board,player_turn):
                             print("check")
+                            print(king_poss[player_turn].legal_moves(board,pieces[-player_turn]))
                             board[first_click_coords[0]][first_click_coords[1]] = clicked_piece
                             board[matrix_indices[0]][matrix_indices[1]] = None
                             clicked_piece.move(old_pos)
@@ -237,10 +238,12 @@ while not lost:
                                 pieces_list.append(en_passanted_pawn)
                                 en_passant_has_happened = False
                                 en_passanted_pawn = None
+                                continue
                             if check_checkmate(board,player_turn):
                                 print("checkmate")
                                 lost = True
-                                continue
+                                continue 
+                            continue
                                         
                         
                         #castling, assumes that the position is legal since it has already been checked

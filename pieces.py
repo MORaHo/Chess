@@ -41,7 +41,7 @@ class Piece():
         image = pg.image.load(os.path.join(__location__,"Sprites",path)).convert_alpha()
         smol_image = pg.transform.scale(image,(CELL_SIZE-2,CELL_SIZE-2))
         srect = smol_image.get_rect(x=(self.vector_pos[1]*CELL_SIZE+1),y=(self.vector_pos[0]*CELL_SIZE+1))
-        screen.blit(smol_image,srect)
+        screen.blit(smol_image,srect) #draw the piece on the screen
         
     
 class Pawn(Piece):
@@ -75,11 +75,11 @@ class Pawn(Piece):
 
         if left_side_pos[0] >= 0 and left_side_pos[1] >= 0 and left_side_pos[0] <= SIZE-1 and left_side_pos[1] <= SIZE-1:
             if self.first_moved_double and board[left_side_pos[0]][left_side_pos[1]] != None:
-                if board[left_side_pos[0]][left_side_pos[1]].colour != self.colour and board[left_side_pos[0]][left_side_pos[1]].first_moved_double:
+                if board[left_side_pos[0]][left_side_pos[1]].colour != self.colour and type(board[left_side_pos[0]][left_side_pos[1]]) == Pawn and board[left_side_pos[0]][left_side_pos[1]].first_moved_double:
                     legal_moves.append(left_pos)
         if right_side_pos[0] >= 0 and right_side_pos[1] >= 0 and right_side_pos[0] <= SIZE-1 and right_side_pos[1] <= SIZE-1:
             if self.first_moved_double and board[right_side_pos[0]][right_side_pos[1]] != None:
-                if board[right_side_pos[0]][right_side_pos[1]].colour != self.colour and board[right_side_pos[0]][right_side_pos[1]].first_moved_double:
+                if board[right_side_pos[0]][right_side_pos[1]].colour != self.colour and type(board[right_side_pos[0]][right_side_pos[1]]) == Pawn and board[right_side_pos[0]][right_side_pos[1]].first_moved_double:
                     legal_moves.append(right_pos)
             
         return legal_moves
